@@ -13,23 +13,24 @@ import com.rodrigodojo.cursomc.domain.Categoria;
 import com.rodrigodojo.cursomc.services.CategoriaService;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value = "/categorias")
 public class CategoriaResource {
-	
+
 	@Autowired
 	private CategoriaService service;
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Categoria>> findAll(){
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Categoria>> findAll() {
 		List<Categoria> list = service.findAll();
-		return ResponseEntity.ok().body(list);		
-	} 
-	
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
-	public ResponseEntity<?>  findById(@PathVariable Integer id) {
+		return ResponseEntity.ok().body(list);
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> findById(@PathVariable Integer id) {
 		Categoria obj = service.find(id);
-		
+
 		return ResponseEntity.ok().body(obj);
+
 	}
 
 }
