@@ -1,6 +1,5 @@
 package com.rodrigodojo.cursomc.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +20,14 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Categoria> find() {
-		
-		Categoria c1 = new Categoria(1, "Informatica");
-		Categoria c2 = new Categoria(2, "Escritorio");
-		
-		List<Categoria> lista = new ArrayList<>();
-		lista.add(c1);
-		lista.add(c2);
-		
-		return lista;
-	}
+	public ResponseEntity<List<Categoria>> findAll(){
+		List<Categoria> list = service.findAll();
+		return ResponseEntity.ok().body(list);		
+	} 
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?>  findById(@PathVariable Integer id) {
-		Categoria obj = service.buscar(id);
+		Categoria obj = service.find(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}
