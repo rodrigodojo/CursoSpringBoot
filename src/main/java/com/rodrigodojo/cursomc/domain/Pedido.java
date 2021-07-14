@@ -10,6 +10,10 @@ public class Pedido implements Serializable{
 	private Integer id;
 	private Date instante;
 	
+	private Pagamento pagamento;
+	private Cliente cliente;
+	private Endereco enderecoDeEntrega;
+	
 	public Pedido() {}
 
 	public Pedido(Integer id, Date instante) {
