@@ -50,6 +50,19 @@ public class Cliente implements Serializable{
 		this.tipo = tipo.getCod();
 	}
 
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}
+
 	public Integer getId() {
 		return id;
 	}

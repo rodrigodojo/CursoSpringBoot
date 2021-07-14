@@ -11,13 +11,29 @@ public class Pagamento implements Serializable{
 	private Integer id;
 	private EstadoPagamento estado;
 	
+	private Pedido pedido;
+	
 	public Pagamento() {}
 
-	public Pagamento(Integer id, EstadoPagamento estado) {
+
+	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
 		this.estado = estado;
+		this.pedido = pedido;
 	}
+
+	
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -34,7 +50,7 @@ public class Pagamento implements Serializable{
 	public void setEstado(EstadoPagamento estado) {
 		this.estado = estado;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
