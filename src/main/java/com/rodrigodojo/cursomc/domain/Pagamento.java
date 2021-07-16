@@ -14,21 +14,21 @@ import com.rodrigodojo.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pagamento implements Serializable{
+public class Pagamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private Integer id;
 	private EstadoPagamento estado;
-	
+
 	@OneToOne
-	@JoinColumn(name="pedido_id")
+	@JoinColumn(name = "pedido_id")
 	@MapsId
 	private Pedido pedido;
-	
-	public Pagamento() {}
 
+	public Pagamento() {
+	}
 
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
@@ -37,17 +37,13 @@ public class Pagamento implements Serializable{
 		this.pedido = pedido;
 	}
 
-	
-
 	public Pedido getPedido() {
 		return pedido;
 	}
 
-
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -64,7 +60,7 @@ public class Pagamento implements Serializable{
 	public void setEstado(EstadoPagamento estado) {
 		this.estado = estado;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,5 +85,5 @@ public class Pagamento implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 }

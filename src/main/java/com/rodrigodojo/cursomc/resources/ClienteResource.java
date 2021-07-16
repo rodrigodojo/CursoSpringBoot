@@ -13,7 +13,7 @@ import com.rodrigodojo.cursomc.domain.Cliente;
 import com.rodrigodojo.cursomc.services.ClienteService;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value = "/clientes")
 public class ClienteResource {
 
 	@Autowired
