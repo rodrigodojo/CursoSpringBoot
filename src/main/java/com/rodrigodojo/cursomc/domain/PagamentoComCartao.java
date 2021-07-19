@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import com.rodrigodojo.cursomc.domain.enums.EstadoPagamento;
 
+
 @Entity
 public class PagamentoComCartao extends Pagamento {
 
