@@ -13,7 +13,12 @@ import com.rodrigodojo.cursomc.domain.Cidade;
 import com.rodrigodojo.cursomc.domain.Cliente;
 import com.rodrigodojo.cursomc.domain.Endereco;
 import com.rodrigodojo.cursomc.domain.Estado;
+import com.rodrigodojo.cursomc.domain.Pagamento;
+import com.rodrigodojo.cursomc.domain.PagamentoComBoleto;
+import com.rodrigodojo.cursomc.domain.PagamentoComCartao;
+import com.rodrigodojo.cursomc.domain.Pedido;
 import com.rodrigodojo.cursomc.domain.Produto;
+import com.rodrigodojo.cursomc.domain.enums.EstadoPagamento;
 import com.rodrigodojo.cursomc.domain.enums.TipoCliente;
 import com.rodrigodojo.cursomc.repositories.CategoriaRepository;
 import com.rodrigodojo.cursomc.repositories.CidadeRepository;
@@ -89,6 +94,16 @@ public class CursomcApplication implements CommandLineRunner{
 		enderecoRepository.saveAll(Arrays.asList(e1,e2));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
+		Pedido ped1 = new Pedido(null,sdf.parse("30/09/2017 10:30"),cli1,e1);
+		Pedido ped2 = new Pedido(null,sdf.parse("10/10/2017 17:40"),cli1,e2);
+		
+		Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
+		ped1.setPagamento(pagto1);
+		Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/10/2017 00:00"), null);
+		ped2.setPagamento(pagto2);
+		
+		cli1.getPedidos().addAll(Arrays.asList(ped1,ped2));
 		
 		
 		
